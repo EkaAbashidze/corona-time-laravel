@@ -1,9 +1,21 @@
-/** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: [],
+  content: [
+    "./resources/**/*.blade.php",
+    "./resources/**/*.js",
+    "./resources/**/*.vue",
+  ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        roboto: ["Roboto", "sans-serif"],
+      },
+      colors: {
+        "gray-dark": "#010414",
+        "gray-light": "#808189",
+        "brand-blue": "#2029F3",
+        "brand-green": "#0FBA68",
+      },
+    },
   },
   plugins: [],
-}
-
+};
