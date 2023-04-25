@@ -2,7 +2,7 @@
 
 return [
 	'welcome_back'    => 'Welcome back',
-	'welcome'         => 'კეთილი იყოს თქვენი მობრძანება კორონათაიმზე',
+	'welcome'         => 'Welcome back to coronatime',
 	'login_details'   => 'Welcome back! Please enter your details',
 	'username'        => 'Username',
 	'password'        => 'Password',
