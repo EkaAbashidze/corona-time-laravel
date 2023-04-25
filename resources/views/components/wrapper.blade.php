@@ -4,7 +4,7 @@
           <img class="w-[170px]" src="{{ asset('storage/photos/logo.svg') }}" alt="Photo">
           @yield('content')
         </div>
-        <img src="{{ asset('storage/photos/photo.png') }}" alt="Photo" class="">
+        <img src="{{ asset('storage/photos/photo.png') }}" alt="Photo" class="hidden sm:block">
       </div>
     </body>
 </html>
