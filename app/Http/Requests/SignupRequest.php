@@ -9,10 +9,6 @@ class SignupRequest extends FormRequest
 	/**
 	 * Determine if the user is authorized to make this request.
 	 */
-	public function authorize(): bool
-	{
-		return false;
-	}
 
 	/**
 	 * Get the validation rules that apply to the request.
@@ -22,9 +18,10 @@ class SignupRequest extends FormRequest
 	public function rules(): array
 	{
 		return [
-			// 'username' => 'required|unique|min:3',
-			// 'email'    => 'required|unique|email',
-			// 'password' => 'required|unique|min:3',
+			'username'        => 'required|min:3|unique:users',
+			'email'           => 'required|email|unique:users',
+			'password'        => 'required|min:3|confirmed',
+			'remember_device' => 'nullable|boolean',
 		];
 	}
 }

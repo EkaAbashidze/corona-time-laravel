@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\SignupRequest;
 use App\Models\User;
 
 class SignupController extends Controller
@@ -11,14 +12,9 @@ class SignupController extends Controller
 		return view('signup');
 	}
 
-	public function store()
+	public function store(SignupRequest $request)
 	{
-		$attributes = request()->validate([
-			'username'        => 'required|min:3|unique:users',
-			'email'           => 'required|email|unique:users',
-			'password'        => 'required|min:3|confirmed',
-			'remember_device' => 'nullable|boolean',
-		]);
+		$attributes = $request->validated();
 
 		User::create($attributes);
 
