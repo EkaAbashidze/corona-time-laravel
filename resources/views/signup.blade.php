@@ -12,11 +12,24 @@
             <input type="text" name="username" id="username" placeholder="Enter unique username" class="block h-[56px] w-full mt-2 px-4 py-2 rounded-md bg-white border border-gray-300 focus:border-brand-green focus:ring-2 focus:ring-brand-green focus:ring-opacity-50" value="{{ old('username') }}" required autocomplete="username" autofocus>
         </div>
 
+
+        @error('username')
+          <p>{{ $message }}</p>
+        @enderror
+
+
+
+
         <div class="mt-4">
             <label class="font-bold text-gray-dark text-[16px]" for="email">{{ __('messages.email') }}</label>
 
             <input type="email" name="email" id="email" placeholder="Enter your email" class="block h-[56px] w-full mt-2 px-4 py-2 rounded-md bg-white border border-gray-300 focus:border-brand-green focus:ring-2 focus:ring-brand-green focus:ring-opacity-50" value="{{ old('email') }}" required autocomplete="email">
         </div>
+
+        @error('email')
+          <p>{{ $message }}</p>
+        @enderror
+
 
         <div class="mt-4">
             <label class="font-bold text-gray-dark text-[16px]" for="password">{{ __('messages.password') }}</label>
@@ -29,6 +42,10 @@
 
             <input type="password" name="password_confirmation" id="password_confirmation" placeholder="Repeat your password" class="block h-[56px] w-full mt-2 px-4 py-2 rounded-md bg-white border border-gray-300 focus:border-brand-green focus:ring-2 focus:ring-brand-green focus:ring-opacity-50" required autocomplete="new-password">
         </div>
+
+        @error('password')
+          <p>{{ $message }}</p>
+        @enderror
 
         <div class="flex items-center mt-8">
             <input type="checkbox" name="remember_device" id="remember-device" class="mr-2">

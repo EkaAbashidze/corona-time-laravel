@@ -24,4 +24,21 @@ class SignupRequest extends FormRequest
 			'remember_device' => 'nullable|boolean',
 		];
 	}
+
+  public function messages()
+  {
+  	return [
+  		'username.required' => 'The username field is required.',
+  		'username.unique'   => 'The username has already been taken.',
+  		'username.min'      => 'The username must be at least :min characters.',
+
+  		'email.required' => 'The email field is required.',
+  		'email.email'    => 'The email must be in a valid format.',
+  		'email.unique'   => 'The email has already been taken.',
+
+  		'password.required'  => 'The password field is required.',
+  		'password.min'       => 'The password must be at least :min characters.',
+  		'password.confirmed' => 'The password confirmation does not match.',
+  	];
+  }
 }
