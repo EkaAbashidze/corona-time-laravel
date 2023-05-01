@@ -17,4 +17,7 @@ return [
 	'repeat_password' => 'Repeat password',
 	'signup'          => 'Sign up',
 	'have_account'    => 'Already have an account?',
+	'sent_email'      => 'We have sent you a confirmation email',
+	'verified'        => 'Your account is confirmed, you can sign in',
+	'reset'           => 'Reset Password',
 ];
