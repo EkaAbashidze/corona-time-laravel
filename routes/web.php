@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\SessionsController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SignupController;
 
@@ -22,8 +23,12 @@ Route::get('login', [SessionsController::class, 'create']);
 
 Route::post('login', [SessionsController::class, 'store']);
 
-//SIGNUP
+// LOGOUT
 
-Route::get('signup', [SignupController::class, 'create']);
+Route::post('logout', [SessionsController::class, 'logout'])->middleware('auth');
 
-Route::post('signup', [SignupController::class, 'store']);
+// SIGNUP
+
+Route::get('signup', [SignupController::class, 'create'])->middleware('guest');
+
+Route::post('signup', [SignupController::class, 'store'])->middleware('guest');
