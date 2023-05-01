@@ -20,8 +20,7 @@ class SessionsController extends Controller
 		$attributes = $request->validated();
 
 		if (Auth::attempt($attributes)) {
-			return redirect('/fdsgf')->with('success', 'Welcome back!');
-			// aq mere unda iyos statistikis gverdi tu racaa ra
+			return redirect('/')->with('success', 'Welcome back!');
 		}
 
 		return back()->withErrors(['email' => 'Your provided credentials could not be verified.']);
