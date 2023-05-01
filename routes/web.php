@@ -16,13 +16,13 @@ use App\Http\Controllers\SignupController;
 
 Route::redirect('/', '/login');
 
-Route::get('/login', function () {
-	return view('login');
-});
+// LOGIN
 
-// Route::get('/signup', function () {
-// 	return view('signup');
-// });
+Route::get('login', [SessionsController::class, 'create']);
+
+Route::post('login', [SessionsController::class, 'store']);
+
+//SIGNUP
 
 Route::get('signup', [SignupController::class, 'create']);
 
