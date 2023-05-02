@@ -18,11 +18,13 @@ class SessionsController extends Controller
 	{
 		$attributes = $request->validated();
 
-		$user = User::where('username', $attributes['login'])
-					->orWhere('email', $attributes['login'])
-					->first();
+		$emailRegEx = '/^\S+@\S+\.\S+$/';
 
-		if ($user && Auth::attempt(['email' => $user->email, 'password' => $attributes['password']])) {
+		$loginType = preg_match($emailRegEx, $attributes['login']) ? 'email' : 'username';
+
+		$user = User::where($loginType, $attributes['login'])->first();
+
+		if ($user && Auth::attempt([$loginType => $user->{$loginType}, 'password' => $attributes['password']])) {
 			return redirect('/')->with('success', 'Welcome back!');
 		}
 
