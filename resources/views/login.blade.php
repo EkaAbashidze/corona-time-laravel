@@ -40,7 +40,7 @@
 
       <button type="submit" class="h-[56px] bg-brand-green text-white py-2 rounded-md font-bold text-center mb-8">LOG IN</button>
 
-      <p class="text-gray-700 text-base">{{ __('messages.no_account') }} <a href="/signup" class="font-bold">{{ __('messages.signup_free') }}</a></p>
+      <p class="text-gray-700 text-base">{{ __('messages.no_account') }} <a href="{{ route('signup') }}" class="font-bold">{{ __('messages.signup_free') }}</a></p>
 
     </div>
     </form>
