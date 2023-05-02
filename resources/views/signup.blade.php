@@ -3,7 +3,7 @@
 @section('content')
     <h1 class="text-gray-dark font-bold text-[25px] mt-[60px]">{{ __('messages.welcome') }}</h1>
 
-    <form method="POST" action="/signup" class="mt-8">
+    <form method="POST" action="{{ route('signup.store') }}" class="mt-8">
         @csrf
 
         <div class="mt-4">
@@ -16,8 +16,6 @@
         @error('username')
           <p>{{ $message }}</p>
         @enderror
-
-
 
 
         <div class="mt-4">

@@ -19,16 +19,16 @@ Route::redirect('/', '/login');
 
 // LOGIN
 
-Route::get('login', [SessionsController::class, 'create']);
+Route::get('login', [SessionsController::class, 'create'])->name('login');
 
-Route::post('login', [SessionsController::class, 'store']);
+Route::post('login', [SessionsController::class, 'store'])->name('login.store');
 
 // LOGOUT
 
-Route::post('logout', [SessionsController::class, 'logout'])->middleware('auth');
+Route::post('logout', [SessionsController::class, 'logout'])->middleware('auth')->name('logout');
 
 // SIGNUP
 
-Route::get('signup', [SignupController::class, 'create'])->middleware('guest');
+Route::get('signup', [SignupController::class, 'create'])->middleware('guest')->name('signup');
 
-Route::post('signup', [SignupController::class, 'store'])->middleware('guest');
+Route::post('signup', [SignupController::class, 'store'])->middleware('guest')->name('signup.store');
