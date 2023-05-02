@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\LoginRequest;
+use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
 
@@ -15,15 +16,17 @@ class SessionsController extends Controller
 
 	public function store(LoginRequest $request): RedirectResponse
 	{
-		// dd($request->input());
-
 		$attributes = $request->validated();
 
-		if (Auth::attempt($attributes)) {
+		$user = User::where('username', $attributes['login'])
+					->orWhere('email', $attributes['login'])
+					->first();
+
+		if ($user && Auth::attempt(['email' => $user->email, 'password' => $attributes['password']])) {
 			return redirect('/')->with('success', 'Welcome back!');
 		}
 
-		return back()->withErrors(['email' => 'Your provided credentials could not be verified.']);
+		return back()->withErrors(['login' => 'Your provided credentials could not be verified.']);
 	}
 
 	public function logout()
