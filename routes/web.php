@@ -25,10 +25,13 @@ Route::post('login', [SessionsController::class, 'store'])->name('login.store');
 
 // LOGOUT
 
-Route::post('logout', [SessionsController::class, 'logout'])->middleware('auth')->name('logout');
+Route::middleware(['auth'])->group(function () {
+	Route::post('logout', [SessionsController::class, 'logout'])->name('logout');
+});
 
 // SIGNUP
 
-Route::get('signup', [SignupController::class, 'create'])->middleware('guest')->name('signup');
-
-Route::post('signup', [SignupController::class, 'store'])->middleware('guest')->name('signup.store');
+Route::middleware(['guest'])->group(function () {
+	Route::get('signup', [SignupController::class, 'create'])->name('signup');
+	Route::post('signup', [SignupController::class, 'store'])->name('signup.store');
+});
