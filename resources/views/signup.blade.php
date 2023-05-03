@@ -3,7 +3,7 @@
 @section('content')
     <h1 class="text-gray-dark font-bold text-[25px] mt-[60px]">{{ __('messages.welcome') }}</h1>
 
-    <form method="POST" action="/signup" class="mt-8">
+    <form method="POST" action="{{ route('signup.store') }}" class="mt-8">
         @csrf
 
         <div class="mt-4">
@@ -16,8 +16,6 @@
         @error('username')
           <p>{{ $message }}</p>
         @enderror
-
-
 
 
         <div class="mt-4">
@@ -54,7 +52,7 @@
 
         <div class="flex flex-col mt-8 text-center">
             <button type="submit" class="h-[56px] bg-brand-green text-white py-2 rounded-md font-bold text-center mb-8">{{ __('messages.signup') }}</button>
-            <p class="text-gray-700 text-base">{{ __('messages.have_account') }} <a href="/login" class="font-bold">
+            <p class="text-gray-700 text-base">{{ __('messages.have_account') }} <a href="{{ route('login') }}" class="font-bold">
               {{ __('messages.login') }}</a></p>
         </div>
     </form>

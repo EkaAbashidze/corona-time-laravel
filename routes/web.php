@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\SessionsController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SignupController;
 
@@ -16,14 +17,21 @@ use App\Http\Controllers\SignupController;
 
 Route::redirect('/', '/login');
 
-Route::get('/login', function () {
-	return view('login');
+// LOGIN
+
+Route::get('login', [SessionsController::class, 'create'])->name('login');
+
+Route::post('login', [SessionsController::class, 'login'])->name('login.login');
+
+// LOGOUT
+
+Route::middleware(['auth'])->group(function () {
+	Route::post('logout', [SessionsController::class, 'logout'])->name('logout');
 });
 
-// Route::get('/signup', function () {
-// 	return view('signup');
-// });
+// SIGNUP
 
-Route::get('signup', [SignupController::class, 'create']);
-
-Route::post('signup', [SignupController::class, 'store']);
+Route::middleware(['guest'])->group(function () {
+	Route::get('signup', [SignupController::class, 'create'])->name('signup');
+	Route::post('signup', [SignupController::class, 'store'])->name('signup.store');
+});
