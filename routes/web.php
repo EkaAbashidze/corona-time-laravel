@@ -40,7 +40,7 @@ Route::middleware(['guest'])->group(function () {
 
 // SEND EMAIL FOR VERIFICATION
 
-Route::get('confirmation', [EmailController::class, 'create'])->middleware('auth');
+Route::get('confirmation', [EmailController::class, 'create']);
 
 // VERIFICATION
 
