@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\EmailController;
 use App\Http\Controllers\SessionsController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SignupController;
@@ -35,3 +36,7 @@ Route::middleware(['guest'])->group(function () {
 	Route::get('signup', [SignupController::class, 'create'])->name('signup');
 	Route::post('signup', [SignupController::class, 'store'])->name('signup.store');
 });
+
+// SEND EMAIL FOR VERIFICATION
+
+Route::get('confirmation', [EmailController::class, 'create'])->middleware('auth');
