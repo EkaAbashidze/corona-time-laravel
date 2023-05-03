@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\LoginRequest;
-use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
 
@@ -14,7 +13,7 @@ class SessionsController extends Controller
 		return view('login');
 	}
 
-	public function store(LoginRequest $request): RedirectResponse
+	public function login(LoginRequest $request): RedirectResponse
 	{
 		$attributes = $request->validated();
 
@@ -22,9 +21,7 @@ class SessionsController extends Controller
 
 		$loginType = preg_match($emailRegEx, $attributes['login']) ? 'email' : 'username';
 
-		$user = User::where($loginType, $attributes['login'])->first();
-
-		if ($user && Auth::attempt([$loginType => $user->{$loginType}, 'password' => $attributes['password']])) {
+		if (Auth::attempt([$loginType => $attributes['login'], 'password' => $attributes['password']])) {
 			return redirect('/')->with('success', 'Welcome back!');
 		}
 

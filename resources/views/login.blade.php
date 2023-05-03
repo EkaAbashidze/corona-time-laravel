@@ -1,7 +1,7 @@
 @extends('components.wrapper')
 
 @section('content')
-<form method="POST" action="{{ route('login.store') }}">
+<form method="POST" action="{{ route('login.login') }}">
   @csrf
 <h1 class="text-gray-dark font-bold text-[25px] mt-[60px]">{{ __('messages.welcome_back') }}</h1>
 
