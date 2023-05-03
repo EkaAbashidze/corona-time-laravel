@@ -12,17 +12,17 @@ class EmailController extends Controller
 		return view('confirmation');
 	}
 
-  public function verified(Request $request)
-  {
-  	$id = $request->route('id');
-  	$hash = $request->route('hash');
+	public function verified(Request $request)
+	{
+		$id = $request->route('id');
+		$hash = $request->route('hash');
 
-  	$user = User::findOrFail($id);
+		$user = User::findOrFail($id);
 
-  	if ($hash === sha1($user->getEmailForVerification())) {
-  		$user->markEmailAsVerified();
-  	}
+		if ($hash === sha1($user->getEmailForVerification())) {
+			$user->markEmailAsVerified();
+		}
 
-  	return view('verified');
-  }
+		return view('verified');
+	}
 }
