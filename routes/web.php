@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\EmailController;
+use App\Http\Controllers\PasswordController;
 use App\Http\Controllers\SessionsController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SignupController;
@@ -55,3 +56,19 @@ Route::post('/email/verification-notification', function (Request $request) {
 
 	return back()->with('message', 'Verification link sent!');
 })->middleware(['auth', 'throttle:6,1'])->name('verification.send');
+
+// RESET PASSWORD
+
+Route::get('reset', [PasswordController::class, 'create'])->middleware('guest');
+
+Route::post('reset', [PasswordController::class, 'forgotPassword'])->middleware('guest')->name('password.email');
+
+Route::get('reset-mail', [PasswordController::class, 'redirect'])->middleware('guest');
+
+Route::post('reset-password/{token}', [PasswordController::class, 'resetPassword'])->name('password.update');
+
+Route::get('reset-password/{token}', function ($token) {
+	return view('reset-password', ['token' => $token]);
+})->name('password.reset');
+
+Route::get('password-updated', [PasswordController::class, 'updated'])->middleware('guest');
