@@ -29,8 +29,8 @@ class AuthServiceProvider extends ServiceProvider
 			->view('emails.signup', ['url' => $url]);
 		});
 
-		Password::resetLinkView(function ($user, $token) {
-			return view('emails.reset-password', ['user' => $user, 'token' => $token]);
-		});
+		// Password::resetLinkView(function ($user, $token) {
+		// 	return view('emails.reset-password', ['user' => $user, 'token' => $token]);
+		// });
 	}
 }
