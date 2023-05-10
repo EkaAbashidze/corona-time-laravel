@@ -30,4 +30,8 @@ return [
 	'confirm-password'    => 'გაიმეორეთ პაროლი',
 	'save-changes'        => 'შენახვა',
 	'password-updated'    => 'თქვენი პაროლი წარმატებით განახლდა',
+
+	'recover-password'               => 'პაროლის აღდგენა',
+	'recover-password-click'         => 'დააწკაპუნეთ ამ ღილაკზე პაროლის აღდგენისთვის',
+	'recover-password-button'        => 'პაროლის აღდგენა',
 ];

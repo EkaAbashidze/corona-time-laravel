@@ -31,4 +31,8 @@ return [
 	'confirm-password'    => 'Repeat password',
 	'save-changes'        => 'SAVE CHANGES',
 	'password-updated'    => 'Your password has been updated successfully',
+
+	'recover-password'               => 'Recover password',
+	'recover-password-click'         => 'click this button to recover a password',
+	'recover-password-button'        => 'RECOVER PASSWORD',
 ];
