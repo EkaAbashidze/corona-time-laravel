@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
-use Illuminate\Http\Request;
 
 class EmailController extends Controller
 {
@@ -12,11 +11,8 @@ class EmailController extends Controller
 		return view('confirmation');
 	}
 
-	public function verified(Request $request)
+	public function verified($id, $hash)
 	{
-		$id = $request->route('id');
-		$hash = $request->route('hash');
-
 		$user = User::findOrFail($id);
 
 		if ($hash === sha1($user->getEmailForVerification())) {
