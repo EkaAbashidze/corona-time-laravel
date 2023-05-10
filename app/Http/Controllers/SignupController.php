@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\SignupRequest;
 use App\Models\User;
+use Illuminate\Auth\Events\Registered;
+use Illuminate\Support\Facades\Hash;
 
 class SignupController extends Controller
 {
@@ -15,9 +17,13 @@ class SignupController extends Controller
 	public function store(SignupRequest $request)
 	{
 		$attributes = $request->validated();
+		$attributes['password'] = Hash::make($attributes['password']);
+		$user = User::create($attributes);
 
-		User::create($attributes);
+		event(new Registered($user));
 
-		return redirect('/');
+		$user->sendEmailVerificationNotification();
+
+		return redirect('/confirmation');
 	}
 }
