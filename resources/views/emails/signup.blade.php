@@ -71,7 +71,7 @@
         <p class="message">{{ __('messages.verify_email') }}</p>
 
 
-    <a href="route('verification.verify')" class="verify-button">
+    <a href="{{ $url }}" class="verify-button">
     {{ __('messages.verify_email_button') }}
     </a>
 
