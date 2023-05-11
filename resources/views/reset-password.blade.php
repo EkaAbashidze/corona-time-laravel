@@ -8,13 +8,13 @@
 
   <h1 class="self-center mb-[54px] text-3xl font-bold">{{ __('messages.reset') }}</h1>
 
-  <form method="POST" action="{{ route('password.update', $token) }}">
+  <form method="POST" action="{{ route('password.update', [$token, $email]) }}">
     @csrf
 
     <input type="hidden" name="token" value="{{ $token }}" >
 
     <div class="mt-4">
-        <label class="font-bold text-gray-dark text-[16px]" for="email">{{ __('messages.new-password') }}</label>
+        <label class="font-bold text-gray-dark text-[16px]" for="password">{{ __('messages.new-password') }}</label>
 
         <input type="password" name="password" id="password" placeholder="Enter your new password" class="block h-[56px] w-[390px] mt-2 px-4 py-2 rounded-md bg-white border border-gray-300 focus:border-brand-green focus:ring-2 focus:ring-brand-green focus:ring-opacity-50" required>
     </div>

@@ -65,10 +65,10 @@ Route::post('reset', [PasswordController::class, 'forgotPassword'])->middleware(
 
 Route::get('reset-mail', [PasswordController::class, 'redirect'])->middleware('guest');
 
-Route::post('reset-password/{token}', [PasswordController::class, 'resetPassword'])->name('password.update');
+Route::post('reset-password/{token}/{email}', [PasswordController::class, 'resetPassword'])->name('password.update');
 
-Route::get('reset-password/{token}', function ($token) {
-	return view('reset-password', ['token' => $token]);
+Route::get('reset-password/{token}', function ($token, Request $request) {
+	return view('reset-password', ['token' => $token, 'email' => $request->input('email')]);
 })->name('password.reset');
 
 Route::get('password-updated', [PasswordController::class, 'updated'])->middleware('guest');

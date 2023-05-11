@@ -44,12 +44,14 @@ class PasswordController extends Controller
 		]);
 	}
 
-	public function resetPassword(ResetPasswordRequest $request)
+	public function resetPassword($token, $email, ResetPasswordRequest $request)
 	{
-		$request->validated();
-
 		$status = Password::reset(
-			$request->only('email', 'password', 'password_confirmation', 'token'),
+			['token'                  => $token,
+				'email'                  => $email,
+				'password'               => $request->input('password'),
+				'password_confirmation'  => $request->input('password_confirmation'),
+			],
 			function (User $user, string $password) {
 				$user->forceFill([
 					'password' => Hash::make($password),
