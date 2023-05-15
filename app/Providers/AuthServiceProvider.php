@@ -4,6 +4,7 @@ namespace App\Providers;
 
 // use Illuminate\Support\Facades\Gate;
 
+use Illuminate\Auth\Notifications\ResetPassword;
 use Illuminate\Auth\Notifications\VerifyEmail;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Notifications\Messages\MailMessage;
@@ -26,6 +27,11 @@ class AuthServiceProvider extends ServiceProvider
 		VerifyEmail::toMailUsing(function (object $notifiable, string $url) {
 			return (new MailMessage)
 			->view('emails.signup', ['url' => $url]);
+		});
+
+		ResetPassword::toMailUsing(function ($email, $token) {
+			return (new MailMessage)
+			->view('emails.reset-password', ['email' => $email, 'token' => $token]);
 		});
 	}
 }

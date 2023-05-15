@@ -24,4 +24,14 @@ return [
 	'verify_email'        => 'დააწკაპუნეთ ღილაკზე თქვენი ელ.ფოსტის დადასტურებისთვის.',
 	'verify_email_button' => 'ელ.ფოსტის დადასტურება',
 	'thanks'              => 'გმადლობთ,',
+
+	'sent_email_password' => 'ჩვენ გამოგიგზავნეთ ელ.წერილი პაროლის აღსადგენად',
+	'new-password'        => 'ახალი პაროლი',
+	'confirm-password'    => 'გაიმეორეთ პაროლი',
+	'save-changes'        => 'შენახვა',
+	'password-updated'    => 'თქვენი პაროლი წარმატებით განახლდა',
+
+	'recover-password'               => 'პაროლის აღდგენა',
+	'recover-password-click'         => 'დააწკაპუნეთ ამ ღილაკზე პაროლის აღდგენისთვის',
+	'recover-password-button'        => 'პაროლის აღდგენა',
 ];
