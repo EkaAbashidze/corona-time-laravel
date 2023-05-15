@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Str;
+use ResetPasswordNotification;
 
 class PasswordController extends Controller
 {
@@ -60,6 +61,7 @@ class PasswordController extends Controller
 				$user->save();
 
 				event(new PasswordReset($user));
+				// $user->notify(new ResetPasswordNotification($user));
 			}
 		);
 

@@ -4,10 +4,10 @@ namespace App\Providers;
 
 // use Illuminate\Support\Facades\Gate;
 
+use Illuminate\Auth\Notifications\ResetPassword;
 use Illuminate\Auth\Notifications\VerifyEmail;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Notifications\Messages\MailMessage;
-use Illuminate\Support\Facades\Password;
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -29,8 +29,8 @@ class AuthServiceProvider extends ServiceProvider
 			->view('emails.signup', ['url' => $url]);
 		});
 
-		// Password::resetLinkView(function ($user, $token) {
-		// 	return view('emails.reset-password', ['user' => $user, 'token' => $token]);
+		// ResetPassword::toMailUsing(function ($email, $token) {
+		// 	return view('emails.reset-password', ['email' => $email, 'token' => $token]);
 		// });
 	}
 }
