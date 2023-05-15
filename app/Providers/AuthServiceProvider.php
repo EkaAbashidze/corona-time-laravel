@@ -29,8 +29,9 @@ class AuthServiceProvider extends ServiceProvider
 			->view('emails.signup', ['url' => $url]);
 		});
 
-		// ResetPassword::toMailUsing(function ($email, $token) {
-		// 	return view('emails.reset-password', ['email' => $email, 'token' => $token]);
-		// });
+		ResetPassword::toMailUsing(function ($email, $token) {
+			return (new MailMessage)
+			->view('emails.reset-password', ['email' => $email, 'token' => $token]);
+		});
 	}
 }

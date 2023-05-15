@@ -68,7 +68,7 @@
 
         <p class="message">{{ __('messages.recover-password-click') }}</p>
 
-        <a href="{{ route('password.reset', ['token' => $token, 'email' => $user->email]) }}" class="verify-button">
+        <a href="{{ route('password.reset', ['token' => $token, 'email' => $email]) }}" class="verify-button">
             {{ __('messages.recover-password-button') }}
         </a>
 
