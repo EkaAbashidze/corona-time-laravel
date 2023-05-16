@@ -74,6 +74,6 @@ Route::get('reset-password/{token}', function ($token, Request $request) {
 
 Route::get('password-updated', [PasswordController::class, 'updated'])->middleware('guest');
 
-// Landing page
+// STATISTICS LANDING PAGE
 
 Route::get('/', [StatisticsController::class, 'create']);
