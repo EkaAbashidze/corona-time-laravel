@@ -8,14 +8,9 @@ use Illuminate\Support\Facades\Http;
 
 class Statistics extends Command
 {
-	/**
-	 * The name and signature of the console command.
-	 *
-	 * @var string
-	 */
 	protected $signature = 'statistics:fetch';
 
-	protected $description = 'Fetch and save country statistics data to database';
+	protected $description = 'Fetch and save country statistics data to the database';
 
 	public function handle()
 	{
@@ -23,6 +18,7 @@ class Statistics extends Command
 
 		if ($response->ok()) {
 			$countriesData = $response->json();
+			$statistics = [];
 
 			foreach ($countriesData as $country) {
 				$countryCode = $country['code'];
@@ -33,16 +29,18 @@ class Statistics extends Command
 				if ($countryStatisticsResponse->ok()) {
 					$countryStatistics = $countryStatisticsResponse->json();
 
-					$newCountryStatistics = new CountryStatistics();
-					$newCountryStatistics->country = $countryStatistics['country'];
-					$newCountryStatistics->code = $countryStatistics['code'];
-					$newCountryStatistics->confirmed = $countryStatistics['confirmed'];
-					$newCountryStatistics->recovered = $countryStatistics['recovered'];
-					$newCountryStatistics->critical = $countryStatistics['critical'];
-					$newCountryStatistics->deaths = $countryStatistics['deaths'];
-					$newCountryStatistics->save();
+					$statistics[] = [
+						'country'   => $countryStatistics['country'],
+						'code'      => $countryStatistics['code'],
+						'confirmed' => $countryStatistics['confirmed'],
+						'recovered' => $countryStatistics['recovered'],
+						'critical'  => $countryStatistics['critical'],
+						'deaths'    => $countryStatistics['deaths'],
+					];
 				}
 			}
+
+			CountryStatistics::insert($statistics);
 		}
 
 		$this->info('Country statistics data fetched and saved successfully!');

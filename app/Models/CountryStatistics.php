@@ -17,4 +17,11 @@ class CountryStatistics extends Model
 		'critical',
 		'deaths',
 	];
+
+	public function search($query, $searchCountry)
+	{
+		if ($searchCountry) {
+			$query->where('counry', 'like' . '%' . $searchCountry . '%');
+		}
+	}
 }

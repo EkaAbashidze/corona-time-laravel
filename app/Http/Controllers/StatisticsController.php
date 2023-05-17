@@ -8,13 +8,11 @@ class StatisticsController extends Controller
 {
 	public function create()
 	{
-		$query = CountryStatistics::query();
+		$search = request('search');
 
-		if (request('search')) {
-			$query->where('country', 'like', '%' . request('search') . '%');
-		}
-
-		$data = $query->get();
+		$data = CountryStatistics::query()
+		->search($search)
+		->get();
 
 		return view('landing', ['data' => $data]);
 	}
