@@ -63,13 +63,83 @@
       @endphp
   @endforeach
 
-  <tr class="border-b border-gray-300 h-[49px]">
-      <td class="px-4 py-2">{{ $totalConfirmed }}</td>
-      <td class="px-4 py-2">{{ $totalDeaths }}</td>
-      <td class="px-4 py-2">{{ $totalRecovered }}</td>
-  </tr>
 
 
+<div class="flex gap-x-6">
+
+
+
+<!--  -->
+
+
+  <div class="relative">
+    <div class="w-[392px] h-[255px] left-108 top-265 bg-[#2029F3] opacity-[0.08] shadow-card rounded-2xl flex flex-col items-center justify-center">
+      
+    </div>
+      
+
+
+    <div class="absolute top-0 left-0 translate-y-10 translate-x-3/4 flex flex-col items-center align-center justify-center">
+
+      <img src="{{ asset('storage/photos/new.svg') }}" alt="Photo" class="w-[90px]">
+      
+      <p class="font-inter font-medium text-[#010414] text-center text-lg leading-6 mt-6">New cases</p>
+
+      <h2 class="font-inter font-extrabold text-[#2029F3] text-4xl leading-12 mt-4">{{ $totalConfirmed }}</h2>
+    
+    </div>
+
+
+
+    
+    
+  </div>
+
+
+  <div class="relative">
+    <div class="w-[392px] h-[255px] left-108 top-265 bg-[#0FBA68] opacity-[0.08] shadow-card rounded-2xl flex flex-col items-center justify-center">
+      
+    </div>
+      
+
+
+    <div class="absolute top-0 left-0 translate-y-12 translate-x-3/4 flex flex-col items-center align-center justify-center">
+
+      <img src="{{ asset('storage/photos/recovered.svg') }}" alt="Photo" class="w-[90px]">
+      
+      <p class="font-inter font-medium text-[#010414] text-center text-lg leading-6 mt-6">Recovered</p>
+
+      <h2 class="font-inter font-extrabold text-[#0FBA68] text-4xl leading-12 mt-4">{{ $totalRecovered }}</h2>
+    
+    </div>
+
+    
+    
+  </div>
+
+  <div class="relative">
+    <div class="w-[392px] h-[255px] left-108 top-265 bg-[#EAD621] opacity-[0.08] shadow-card rounded-2xl flex flex-col items-center justify-center">
+      
+    </div>
+      
+
+    <div class="absolute top-0 left-0 translate-y-11 translate-x-3/4 flex flex-col items-center align-center justify-center">
+
+      <img src="{{ asset('storage/photos/deaths.svg') }}" alt="Photo" class="w-[90px]">
+      
+      <p class="font-inter font-medium text-[#010414] text-center text-lg leading-6 mt-6">Deaths</p>
+
+      <h2 class="font-inter font-extrabold text-[#EAD621] text-4xl leading-12 mt-4">{{ $totalDeaths }}</h2>
+    
+    </div>
+
+
+
+    
+    
+  </div>
+
+  </div>
 
   @endif
 
