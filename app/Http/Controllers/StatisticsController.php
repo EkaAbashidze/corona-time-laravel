@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\CountryStatistics;
+use Illuminate\Support\Facades\Auth;
 
 class StatisticsController extends Controller
 {
@@ -10,8 +11,10 @@ class StatisticsController extends Controller
 	{
 		$search = request('search');
 
+		$user = Auth::user();
+
 		$data = CountryStatistics::searchcountry($search)->get();
 
-		return view('landing', compact('data'));
+		return view('landing', compact('data', 'user'));
 	}
 }

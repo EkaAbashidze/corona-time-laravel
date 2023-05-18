@@ -21,10 +21,14 @@
 
     <!-- User name and logout button -->
     <div class="flex items-center ml-4">
-      <span class="mr-2">$user->username</span>
+      <span class="mr-2">{{$user->username }}</span>
       <div class="border-l border-gray-300 h-[32px] mx-4"></div>
-      <button class="px-4 py-2 font-medium text-gray-700 bg-white rounded-md hover:bg-gray-100 focus:outline-none">Log out</button>
+      <form method="POST" action="{{ route('logout') }}">
+        @csrf
+        <button type="submit" class="px-4 py-2 font-medium text-gray-700 bg-white rounded-md hover:bg-gray-100 focus:outline-none">Log out</button>
+      </form>
     </div>
+
   </div>
 </nav>
 

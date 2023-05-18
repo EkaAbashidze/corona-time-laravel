@@ -76,4 +76,4 @@ Route::get('password-updated', [PasswordController::class, 'updated'])->middlewa
 
 // STATISTICS LANDING PAGE
 
-Route::get('/', [StatisticsController::class, 'create'])->name('landing');
+Route::get('/', [StatisticsController::class, 'create'])->name('landing')->middleware('auth');
