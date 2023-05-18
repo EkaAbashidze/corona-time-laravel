@@ -35,9 +35,49 @@
 
     
   <div class="flex gap-x-[72px]">
-    <a href="/" class="h-14 flex py-2 rounded-md font-inter font-bold text-base text-dark-100 mb-8">Worldwide</a>
-    <a href="/" class="h-14 flex py-2 rounded-md font-inter font-bold text-base text-dark-100 mb-8">By country</a>
+
+
+  <form method="GET" action="{{ route('landing') }}">
+      <button type="submit" name="view" value="worldwide" class="h-14 flex py-2 rounded-md font-inter font-bold text-base text-dark-100 mb-8">Worldwide</button>
+    </form>
+
+    <form method="GET" action="{{ route('landing') }}">
+      <button type="submit" name="view" value="bycountry" class="h-14 flex py-2 rounded-md font-inter font-bold text-base text-dark-100 mb-8">By Country</button>
+    </form>
+
   </div>
+
+
+  @if (!request('view') || request('view') === 'worldwide')
+   
+
+  @php
+    $totalConfirmed = $totalDeaths = $totalRecovered = 0;
+  @endphp
+
+  @foreach ($data as $country)
+      @php
+          $totalConfirmed += $country->confirmed;
+          $totalDeaths += $country->deaths;
+          $totalRecovered += $country->recovered;
+      @endphp
+  @endforeach
+
+  <tr class="border-b border-gray-300 h-[49px]">
+      <td class="px-4 py-2">{{ $totalConfirmed }}</td>
+      <td class="px-4 py-2">{{ $totalDeaths }}</td>
+      <td class="px-4 py-2">{{ $totalRecovered }}</td>
+  </tr>
+
+
+
+  @endif
+
+
+
+
+
+  @if(request('view') === 'bycountry')
 
 
 
@@ -84,6 +124,10 @@
     </tbody>
   </table>
 </div>
+
+
+
+@endif
 
 
 
