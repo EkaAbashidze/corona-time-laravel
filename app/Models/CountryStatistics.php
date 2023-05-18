@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Builder as EloquentBuilder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -18,10 +19,8 @@ class CountryStatistics extends Model
 		'deaths',
 	];
 
-	public function search($query, $searchCountry)
+	public function scopeSearchCountry(EloquentBuilder $query, $searchCountry): void
 	{
-		if ($searchCountry) {
-			$query->where('counry', 'like' . '%' . $searchCountry . '%');
-		}
+		$query->where('country', 'like', '%' . $searchCountry . '%');
 	}
 }

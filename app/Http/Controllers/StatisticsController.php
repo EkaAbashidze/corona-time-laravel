@@ -10,10 +10,8 @@ class StatisticsController extends Controller
 	{
 		$search = request('search');
 
-		$data = CountryStatistics::query()
-		->search($search)
-		->get();
+		$data = CountryStatistics::searchcountry($search)->get();
 
-		return view('landing', ['data' => $data]);
+		return view('landing', compact('data'));
 	}
 }
