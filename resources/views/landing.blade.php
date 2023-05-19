@@ -148,9 +148,6 @@
   @endif
 
 
-
-
-
   @if(request('view') === 'bycountry')
 
 
