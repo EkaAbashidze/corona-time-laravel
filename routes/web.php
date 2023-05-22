@@ -5,6 +5,7 @@ use App\Http\Controllers\PasswordController;
 use App\Http\Controllers\SessionsController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SignupController;
+use App\Http\Controllers\StatisticsController;
 use Illuminate\Http\Request;
 
 /*
@@ -72,3 +73,7 @@ Route::get('reset-password/{token}', function ($token, Request $request) {
 })->name('password.reset');
 
 Route::get('password-updated', [PasswordController::class, 'updated'])->middleware('guest');
+
+// STATISTICS LANDING PAGE
+
+Route::get('/', [StatisticsController::class, 'create'])->name('landing')->middleware('auth');
