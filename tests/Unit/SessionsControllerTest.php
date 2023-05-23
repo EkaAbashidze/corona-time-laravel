@@ -36,20 +36,25 @@ class SessionsControllerTest extends TestCase
   {
   	$user = \App\Models\User::factory()->create();
 
-  	$response = $this->post('/login', [
+  	$response = $this->post(route('login.login'), [
   		'login'    => $user->email,
   		'password' => 'invalidpassword',
   	]);
 
-  	$response->assertRedirect('/login')
+  	$response->assertRedirect()
   		  ->assertSessionHasErrors(['login']);
+
+  	$response->assertSessionHasErrors('login');
+  	$this->assertEquals('Your provided credentials could not be verified.', session('errors')->first('login'));
   }
 
   public function test_logout_redirects_to_login_page()
   {
-  	$response = $this->post('/logout');
+  	$user = User::factory()->create();
 
-  	$response->assertRedirect('/login')
-  		->assertSessionHas('success', 'Goodbye!');
+  	$this->actingAs($user) // Authenticate the user
+  		   ->post('/logout')
+  		   ->assertRedirect('/login')
+  		   ->assertSessionHas('success', 'Goodbye!');
   }
 }
