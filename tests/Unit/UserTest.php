@@ -71,11 +71,9 @@ class UserTest extends TestCase
 
 	public function test_user_input_validation()
 	{
-		// Test for input fields
 		$response = $this->post('/signup', []);
 		$response->assertSessionHasErrors(['username', 'email', 'password']);
 
-		// valid email
 		$response = $this->post('/signup', [
 			'username'              => fake()->userName(),
 			'email'                 => 'invalidemail',
@@ -85,8 +83,6 @@ class UserTest extends TestCase
 		]);
 		$response->assertSessionHasErrors(['email']);
 
-		// password
-
 		$response = $this->post('/signup', [
 			'username'              => fake()->userName(),
 			'email'                 => fake()->unique()->safeEmail(),
@@ -94,8 +90,6 @@ class UserTest extends TestCase
 			'password_confirmation' => fake()->password(),
 		]);
 		$response->assertSessionHasErrors(['password']);
-
-		// Unique email
 
 		$user = User::factory()->create();
 		$response = $this->post('/signup', [
@@ -108,20 +102,10 @@ class UserTest extends TestCase
 		$response->assertSessionHasErrors(['email']);
 	}
 
-	public function test_user_authentication()
-	{
-		// TODO
-	}
-
 	public function test_password_hashing()
 	{
 		$password = 'password';
 		$user = User::factory()->create(['password' => bcrypt($password)]);
 		$this->assertTrue(Hash::check($password, $user->password));
-	}
-
-	public function test_email_sending()
-	{
-		// TODO
 	}
 }
