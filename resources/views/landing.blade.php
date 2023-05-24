@@ -11,13 +11,9 @@
   <img src="{{ asset('storage/photos/logo.svg') }}" alt="Photo" class="ml-8">
 
   <div class="flex items-center">
-    <!-- Dropdown menu for translations -->
-    <div class="mr-4">
-      <select class="py-2 font-medium text-gray-700 bg-white rounded-md hover:bg-gray-100 focus:outline-none">
-        <option value="english">English</option>
-        <option value="georgian">Georgian</option>
-      </select>
-    </div>
+
+  
+  <x-language/>
 
     <!-- User name and logout button -->
     <div class="flex items-center ml-4">

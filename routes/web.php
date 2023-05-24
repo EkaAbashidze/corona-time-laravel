@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\EmailController;
+use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\PasswordController;
 use App\Http\Controllers\SessionsController;
 use Illuminate\Support\Facades\Route;
@@ -77,3 +78,7 @@ Route::get('password-updated', [PasswordController::class, 'updated'])->middlewa
 // STATISTICS LANDING PAGE
 
 Route::get('/', [StatisticsController::class, 'create'])->name('landing')->middleware('auth');
+
+// LANGUAGE CHANGING
+
+Route::get('language/{locale}', [LanguageController::class, 'changeLanguage'])->name('language.change');
