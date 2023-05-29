@@ -34,4 +34,7 @@ return [
 	'recover-password'               => 'პაროლის აღდგენა',
 	'recover-password-click'         => 'დააწკაპუნეთ ამ ღილაკზე პაროლის აღდგენისთვის',
 	'recover-password-button'        => 'პაროლის აღდგენა',
+	'english'                        => 'ინგლისური',
+	'georgian'                       => 'ქართული',
+	'statistics_country'             => 'სტატისტიკა ქვეყნების მიხედვით',
 ];
