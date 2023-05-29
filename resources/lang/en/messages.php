@@ -35,4 +35,5 @@ return [
 	'recover-password'               => 'Recover password',
 	'recover-password-click'         => 'click this button to recover a password',
 	'recover-password-button'        => 'RECOVER PASSWORD',
+	'statistics_country'             => 'Statistics by country',
 ];

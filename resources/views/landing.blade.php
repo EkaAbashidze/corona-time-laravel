@@ -29,7 +29,7 @@
 </nav>
 
 
-  <h1 class="font-inter font-bold text-4xl text-dark-100 my-[40px]">Statistics by country</h1>
+  <h1 class="font-inter font-bold text-4xl text-dark-100 my-[40px]">{{ __('messages.statistics_country') }}</h1>
 
 
 

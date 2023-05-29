@@ -36,4 +36,5 @@ return [
 	'recover-password-button'        => 'პაროლის აღდგენა',
 	'english'                        => 'ინგლისური',
 	'georgian'                       => 'ქართული',
+	'statistics_country'             => 'სტატისტიკა ქვეყნების მიხედვით',
 ];
