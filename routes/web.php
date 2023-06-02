@@ -22,7 +22,7 @@ use Illuminate\Http\Request;
 
 // LOGIN
 
-Route::middleware('SetLocale')->group(function () {
+Route::middleware('language')->group(function () {
 	Route::get('login', [SessionsController::class, 'create'])->name('login');
 
 	Route::post('login', [SessionsController::class, 'login'])->name('login.login');
