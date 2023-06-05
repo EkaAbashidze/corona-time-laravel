@@ -93,13 +93,7 @@ And now you should provide **.env** file all the necessary environment variables
 >DB_PASSWORD=*****
 
 
-after setting up **.env** file, execute:
-```sh
-php artisan config:cache
-```
-in order to cache environment variables.
-
-4\. Then, in the root of the project, run the following command:
+4\. In the root of the project, run the following command:
 ```sh
   php artisan key:generate
 ```
@@ -127,14 +121,6 @@ To transform JS files into executable scripts, run:
 ```sh
   npm run dev
 ```
-
-To watch files during development, execute:
-
-```sh
-  npm run watch
-```
-it will watch JS files and on change it will rebuild them.
-
 
 ## Database
 
