@@ -60,11 +60,11 @@ Route::middleware('language')->group(function () {
 
 	// RESET PASSWORD
 
-	Route::get('reset', [PasswordController::class, 'create'])->middleware('guest');
+	Route::view('/reset', 'reset')->middleware('guest');
 
 	Route::post('reset', [PasswordController::class, 'forgotPassword'])->middleware('guest')->name('password.email');
 
-	Route::get('reset-mail', [PasswordController::class, 'redirect'])->middleware('guest')->name('reset-mail');
+	Route::view('/reset-mail', 'reset-mail')->middleware('guest')->name('reset-mail');
 
 	Route::post('reset-password/{token}/{email}', [PasswordController::class, 'resetPassword'])->name('password.update');
 
@@ -72,7 +72,7 @@ Route::middleware('language')->group(function () {
 		return view('reset-password', ['token' => $token, 'email' => $request->input('email')]);
 	})->name('password.reset');
 
-	Route::get('password-updated', [PasswordController::class, 'updated'])->middleware('guest');
+	Route::view('/password-updated', 'password-updated')->middleware('guest');
 
 	Route::get('/', [StatisticsController::class, 'create'])->name('landing')->middleware('auth');
 });

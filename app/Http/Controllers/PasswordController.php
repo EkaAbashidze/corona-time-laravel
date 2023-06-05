@@ -12,21 +12,6 @@ use Illuminate\Support\Str;
 
 class PasswordController extends Controller
 {
-	public function create()
-	{
-		return view('reset');
-	}
-
-	public function redirect()
-	{
-		return view('reset-mail');
-	}
-
-	public function updated()
-	{
-		return view('password-updated');
-	}
-
 	public function forgotPassword(ForgotPasswordRequest $request)
 	{
 		$attributes = $request->validated();
