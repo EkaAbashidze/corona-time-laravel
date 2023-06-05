@@ -19,8 +19,8 @@
 
   <div class="flex items-center justify-between mt-8">
     <div class="flex items-center">
-        <input type="checkbox" name="remember-device" id="remember-device" class="mr-2">
-        <label for="remember-device" class="text-gray-light text-sm font-bold">{{ __('messages.remember_device') }}</label>
+        <input type="checkbox" name="remember_device" id="remember_device" class="mr-2">
+        <label for="remember_device" class="text-gray-light text-sm font-bold">{{ __('messages.remember_device') }}</label>
     </div>
     <a href="/reset" class="text-brand-blue text-sm font-bold">{{ __('messages.forgot_password') }}</a>
   </div>

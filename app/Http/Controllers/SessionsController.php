@@ -19,7 +19,7 @@ class SessionsController extends Controller
 
 		$loginType = filter_var($attributes['login'], FILTER_VALIDATE_EMAIL) ? 'email' : 'username';
 
-		if (Auth::attempt([$loginType => $attributes['login'], 'password' => $attributes['password']])) {
+		if (Auth::attempt([$loginType => $attributes['login'], 'password' => $attributes['password']], (bool)$request->remember_device)) {
 			return redirect('/')->with('success', 'Welcome back!');
 		}
 

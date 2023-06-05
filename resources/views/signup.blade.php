@@ -37,10 +37,10 @@
   @enderror
 
   <div class="flex items-center mt-8">
-    <input type="checkbox" name="remember_device" id="remember-device" class="mr-2">
-    <label for="remember-device" class="text-gray-light text-sm font-bold">{{ __('messages.remember_device') }}</label>
+    <input type="checkbox" name="remember_device" id="remember_device" class="mr-2">
+    <label for="remember_device" class="text-gray-light text-sm font-bold">{{ __('messages.remember_device') }}</label>
   </div>
-  
+
   <div class="flex flex-col mt-8 text-center">
     <button type="submit" class="h-[56px] bg-brand-green text-white py-2 rounded-md font-bold text-center mb-8">{{ __('messages.signup') }}</button>
     <p class="text-gray-700 text-base">{{ __('messages.have_account') }} <a href="{{ route('login') }}" class="font-bold">
