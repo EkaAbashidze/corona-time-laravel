@@ -20,31 +20,21 @@ use Illuminate\Http\Request;
 |
 */
 
-// LOGIN
-
 Route::middleware('language')->group(function () {
 	Route::get('login', [SessionsController::class, 'create'])->name('login');
 
 	Route::post('login', [SessionsController::class, 'login'])->name('login.login');
 
-	// LOGOUT
-
 	Route::middleware(['auth'])->group(function () {
 		Route::post('logout', [SessionsController::class, 'logout'])->name('logout');
 	});
-
-	// SIGNUP
 
 	Route::middleware(['guest'])->group(function () {
 		Route::get('signup', [SignupController::class, 'create'])->name('signup');
 		Route::post('signup', [SignupController::class, 'store'])->name('signup.store');
 	});
 
-	// SEND EMAIL FOR VERIFICATION
-
 	Route::get('confirmation', [EmailController::class, 'create'])->name('confirmation');
-
-	// VERIFICATION
 
 	Route::get('/email/verify', function () {
 		return view('auth.verify-email');
@@ -57,8 +47,6 @@ Route::middleware('language')->group(function () {
 
 		return back()->with('message', 'Verification link sent!');
 	})->middleware(['auth', 'throttle:6,1'])->name('verification.send');
-
-	// RESET PASSWORD
 
 	Route::view('/reset', 'reset')->middleware('guest');
 
@@ -76,7 +64,5 @@ Route::middleware('language')->group(function () {
 
 	Route::get('/', [StatisticsController::class, 'create'])->name('landing')->middleware('auth');
 });
-
-// LANGUAGE CHANGING
 
 Route::get('language', [LanguageController::class, 'changeLanguage'])->name('language.change');

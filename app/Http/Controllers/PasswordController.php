@@ -15,7 +15,6 @@ class PasswordController extends Controller
 	public function forgotPassword(ForgotPasswordRequest $request)
 	{
 		$attributes = $request->validated();
-		// dd($attributes['email']);
 
 		$status = Password::sendResetLink(
 			['email' => $attributes['email']]
