@@ -1,7 +1,7 @@
 <x-html/>
 <div class="mx-[108px]">
 <nav class="flex items-center justify-between h-[80px] border-t-2 border-b-[1px] border-gray-200">
-  <img src="{{ asset('storage/photos/logo.svg') }}" alt="Photo" class="ml-8">
+  <img src="{{ asset('images/photos/logo.svg') }}" alt="Photo" class="ml-8">
   <div class="flex items-center">
     <x-language/>
     <div class="flex items-center ml-4">
@@ -44,7 +44,7 @@
     <div class="w-[392px] h-[255px] left-108 top-265 bg-[#2029F3] opacity-[0.08] shadow-card rounded-2xl flex flex-col items-center justify-center">
     </div>
     <div class="absolute top-0 left-0 translate-y-10 translate-x-3/4 flex flex-col items-center align-center justify-center">
-      <img src="{{ asset('storage/photos/new.svg') }}" alt="Photo" class="w-[90px]">
+      <img src="{{ asset('images/photos/new.svg') }}" alt="Photo" class="w-[90px]">
       <p class="font-inter font-medium text-[#010414] text-center text-lg leading-6 mt-6">New cases</p>
       <h2 class="font-inter font-extrabold text-[#2029F3] text-4xl leading-12 mt-4">{{ $totalConfirmed }}</h2>
     </div>
@@ -53,7 +53,7 @@
   <div class="w-[392px] h-[255px] left-108 top-265 bg-[#0FBA68] opacity-[0.08] shadow-card rounded-2xl flex flex-col items-center justify-center">
   </div>
   <div class="absolute top-0 left-0 translate-y-12 translate-x-3/4 flex flex-col items-center align-center justify-center">
-    <img src="{{ asset('storage/photos/recovered.svg') }}" alt="Photo" class="w-[90px]">
+    <img src="{{ asset('images/photos/recovered.svg') }}" alt="Photo" class="w-[90px]">
     <p class="font-inter font-medium text-[#010414] text-center text-lg leading-6 mt-6">Recovered</p>
     <h2 class="font-inter font-extrabold text-[#0FBA68] text-4xl leading-12 mt-4">{{ $totalRecovered }}</h2>
   </div>  
@@ -62,7 +62,7 @@
     <div class="w-[392px] h-[255px] left-108 top-265 bg-[#EAD621] opacity-[0.08] shadow-card rounded-2xl flex flex-col items-center justify-center">
     </div>
     <div class="absolute top-0 left-0 translate-y-11 translate-x-3/4 flex flex-col items-center align-center justify-center">
-      <img src="{{ asset('storage/photos/deaths.svg') }}" alt="Photo" class="w-[90px]">
+      <img src="{{ asset('images/photos/deaths.svg') }}" alt="Photo" class="w-[90px]">
       <p class="font-inter font-medium text-[#010414] text-center text-lg leading-6 mt-6">Deaths</p>
       <h2 class="font-inter font-extrabold text-[#EAD621] text-4xl leading-12 mt-4">{{ $totalDeaths }}</h2>
     </div> 

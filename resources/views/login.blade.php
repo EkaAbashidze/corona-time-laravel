@@ -9,12 +9,18 @@
   <div class="mt-4">
    <label class="font-bold text-gray-dark text-[16px]" for="login">{{ __('messages.username') }}</label>
    <input type="text" name="login" id="login" placeholder="Enter unique username or email" class="block h-[56px] w-full mt-2 px-4 py-2 rounded-md bg-white border border-gray-300 focus:border-brand-green focus:ring-2 focus:ring-brand-green focus:ring-opacity-50">
+   @error('login')
+       <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+   @enderror
   </div>
 
   <div class="mt-4">
    <label class="font-bold text-gray-dark text-[16px]" for="password">{{ __('messages.password') }}</label>
    <input type="password" name="password" id="password" placeholder="Fill in password" 
    class="block h-[56px] w-full mt-2 px-4 py-2 rounded-md bg-white border border-gray-300 focus:border-brand-green focus:ring-2 focus:ring-brand-green focus:ring-opacity-50">
+   @error('password')
+       <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+   @enderror
   </div>
 
   <div class="flex items-center justify-between mt-8">

@@ -1,6 +1,6 @@
 <x-html/>
 <div class="flex flex-col items-center h-screen mt-[40px]">
- <img class="w-[170px] mb-8" src="{{ asset('storage/photos/logo.svg') }}" alt="Photo">
+ <img class="w-[170px] mb-8" src="{{ asset('images/photos/logo.svg') }}" alt="Photo">
  <div class="text-start flex flex-col items-start justify-center h-screen">
   <h1 class="self-center mb-[54px] text-3xl font-bold">{{ __('messages.reset') }}</h1>
   <form method="POST" action="reset">

@@ -10,7 +10,7 @@
   </div>
 
   @error('username')
-    <p>{{ $message }}</p>
+    <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
   @enderror
 
   <div class="mt-4">
@@ -19,7 +19,7 @@
   </div>
 
   @error('email')
-    <p>{{ $message }}</p>
+    <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
   @enderror
 
   <div class="mt-4">
@@ -33,7 +33,7 @@
   </div>
 
   @error('password')
-    <p>{{ $message }}</p>
+    <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
   @enderror
 
   <div class="flex items-center mt-8">

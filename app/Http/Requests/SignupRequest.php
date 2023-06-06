@@ -30,7 +30,7 @@ class SignupRequest extends FormRequest
   	return [
   		'username.required' => 'The username field is required.',
   		'username.unique'   => 'The username has already been taken.',
-  		'username.min'      => 'The username must be at least 3:min characters.',
+  		'username.min'      => 'The username must be at least :min characters.',
 
   		'email.required' => 'The email field is required.',
   		'email.email'    => 'The email must be in a valid format.',
