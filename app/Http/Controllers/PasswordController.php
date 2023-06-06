@@ -6,12 +6,20 @@ use App\Http\Requests\ForgotPasswordRequest;
 use App\Http\Requests\ResetPasswordRequest;
 use App\Models\User;
 use Illuminate\Auth\Events\PasswordReset;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Str;
 
 class PasswordController extends Controller
 {
+	public function showResetForm(Request $request, $token)
+	{
+		$email = $request->input('email');
+
+		return view('reset-password', ['token' => $token, 'email' => $email]);
+	}
+
 	public function forgotPassword(ForgotPasswordRequest $request)
 	{
 		$attributes = $request->validated();

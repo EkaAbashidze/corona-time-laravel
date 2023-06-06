@@ -7,7 +7,6 @@ use App\Http\Controllers\SessionsController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SignupController;
 use App\Http\Controllers\StatisticsController;
-use Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,9 +31,7 @@ Route::middleware(['language'])->group(function () {
 		Route::post('reset', [PasswordController::class, 'forgotPassword'])->name('password.email');
 	});
 
-	Route::get('reset-password/{token}', function ($token, Request $request) {
-		return view('reset-password', ['token' => $token, 'email' => $request->input('email')]);
-	})->name('password.reset');
+	Route::get('reset-password/{token}', [PasswordController::class, 'showResetForm'])->name('password.reset');
 
 	Route::post('reset-password/{token}/{email}', [PasswordController::class, 'resetPassword'])->name('password.update');
 
@@ -44,10 +41,7 @@ Route::middleware(['language'])->group(function () {
 	});
 
 	Route::middleware(['auth', 'throttle:6,1'])->group(function () {
-		Route::post('/email/verification-notification', function (Request $request) {
-			$request->user()->sendEmailVerificationNotification();
-			return back()->with('message', 'Verification link sent!');
-		})->name('verification.send');
+		Route::post('/email/verification-notification', [EmailController::class, 'sendVerificationNotification'])->name('verification.send');
 	});
 
 	Route::prefix('email')->middleware(['auth'])->group(function () {
