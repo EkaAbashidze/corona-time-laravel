@@ -73,7 +73,7 @@
 <form method="GET" action="{{ route('landing') }}" class="mb-5">
 <div class="relative">
   <input type="text" name="search" placeholder="Search by country" value="{{ request('search') }}" class="w-64 h-12 pl-10 pr-4 py-2 font-inter text-dark-FFF bg-dark-20 border border-dark-100 rounded-md">
-  <img src="{{ asset('storage/photos/search.svg') }}" alt="Photo" class="absolute left-3 top-3 w-6 h-6 text-gray-400">
+  <img src="{{ asset('images/photos/search.svg') }}" alt="Photo" class="absolute left-3 top-3 w-6 h-6 text-gray-400">
   <input type="hidden" name="view" value="bycountry">
   <input type="hidden" name="sort" value="{{ request('sort') }}">
 </div>
