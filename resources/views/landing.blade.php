@@ -9,7 +9,7 @@
       <div class="border-l border-gray-300 h-[32px] mx-4"></div>
       <form method="POST" action="{{ route('logout') }}">
         @csrf
-        <button type="submit" class="px-4 py-2 font-medium text-gray-700 bg-white rounded-md hover:bg-gray-100 focus:outline-none">Log out</button>
+        <button type="submit" class="px-4 py-2 font-medium text-gray-700 bg-white rounded-md hover:bg-gray-100 focus:outline-none">{{ __('messages.log_out') }}</button>
       </form>
     </div>
   </div>
@@ -18,10 +18,10 @@
 <h1 class="font-inter font-bold text-4xl text-dark-100 my-[40px]">{{ __('messages.statistics_country') }}</h1>
 <div class="flex gap-x-[72px] border-b-[1px] border-[#F6F6F7] mb-8">
   <form method="GET" action="{{ route('landing') }}">
-    <button type="submit" name="view" value="worldwide" class="h-12 flex py-2 font-inter font-bold text-base text-dark-100 {{ Request::query('view') == null || Request::query('view') == 'worldwide' ? 'border-b-[3px] border-[#010414]' : '' }}">Worldwide</button>
+    <button type="submit" name="view" value="worldwide" class="h-12 flex py-2 font-inter font-bold text-base text-dark-100 {{ Request::query('view') == null || Request::query('view') == 'worldwide' ? 'border-b-[3px] border-[#010414]' : '' }}">{{ __('messages.worldwide') }}</button>
   </form>
   <form method="GET" action="{{ route('landing') }}">
-    <button type="submit" name="view" value="bycountry" class="h-12 flex py-2 font-inter font-bold text-base text-dark-100 {{ Request::query('view') == 'bycountry' ? 'border-b-[3px] border-[#010414]' : '' }}">By Country</button>
+    <button type="submit" name="view" value="bycountry" class="h-12 flex py-2 font-inter font-bold text-base text-dark-100 {{ Request::query('view') == 'bycountry' ? 'border-b-[3px] border-[#010414]' : '' }}">{{ __('messages.by_country') }}</button>
   </form>
 </div>
 
@@ -46,7 +46,7 @@
     </div>
     <div class="absolute top-0 left-0 translate-y-10 translate-x-3/4 flex flex-col items-center align-center justify-center">
       <img src="{{ asset('images/photos/new.svg') }}" alt="Photo" class="w-[90px]">
-      <p class="font-inter font-medium text-[#010414] text-center text-lg leading-6 mt-6">New cases</p>
+      <p class="font-inter font-medium text-[#010414] text-center text-lg leading-6 mt-6">{{ __('messages.new_cases') }}</p>
       <h2 class="font-inter font-extrabold text-[#2029F3] text-4xl leading-12 mt-4">{{ $totalConfirmed }}</h2>
     </div>
  </div>
@@ -55,7 +55,7 @@
   </div>
   <div class="absolute top-0 left-0 translate-y-12 translate-x-3/4 flex flex-col items-center align-center justify-center">
     <img src="{{ asset('images/photos/recovered.svg') }}" alt="Photo" class="w-[90px]">
-    <p class="font-inter font-medium text-[#010414] text-center text-lg leading-6 mt-6">Recovered</p>
+    <p class="font-inter font-medium text-[#010414] text-center text-lg leading-6 mt-6">{{ __('messages.recovered') }}</p>
     <h2 class="font-inter font-extrabold text-[#0FBA68] text-4xl leading-12 mt-4">{{ $totalRecovered }}</h2>
   </div>  
 </div>
@@ -64,7 +64,7 @@
     </div>
     <div class="absolute top-0 left-0 translate-y-11 translate-x-3/4 flex flex-col items-center align-center justify-center">
       <img src="{{ asset('images/photos/deaths.svg') }}" alt="Photo" class="w-[90px]">
-      <p class="font-inter font-medium text-[#010414] text-center text-lg leading-6 mt-6">Deaths</p>
+      <p class="font-inter font-medium text-[#010414] text-center text-lg leading-6 mt-6">{{ __('messages.deaths') }}</p>
       <h2 class="font-inter font-extrabold text-[#EAD621] text-4xl leading-12 mt-4">{{ $totalDeaths }}</h2>
     </div> 
   </div>
@@ -84,18 +84,18 @@
     <thead>
       <tr class="bg-[#F6F6F7] text-gray-600 h-[56px]">
         <th class="px-4 py-2 text-left">
-          Location <i class="fas fa-sort"></i>
+        {{ __('messages.location') }}<i class="fas fa-sort"></i>
         </th>
         <th class="px-4 py-2 text-left">
-          New Cases <i class="fas fa-sort"></i>
+        {{ __('messages.new_cases') }} <i class="fas fa-sort"></i>
         </th>
         <th class="px-4 py-2 text-left cursor-pointer hover:bg-gray-100">
           <a href="{{ url()->current() }}?sort=deaths">
-            Deaths <i class="fas fa-sort"></i>
+          {{ __('messages.deaths') }} <i class="fas fa-sort"></i>
           </a>
         </th>
         <th class="px-4 py-2 text-left">
-          Recovered <i class="fas fa-sort"></i>
+        {{ __('messages.recovered') }} <i class="fas fa-sort"></i>
         </th>
       </tr>
     </thead>
