@@ -20,7 +20,16 @@ class LoginRequest extends FormRequest
 		return [
 			'login'           => 'required|min:3',
 			'password'        => 'required',
-			'remember_device' => 'nullable|boolean',
+			'remember_device' => 'nullable',
+		];
+	}
+
+	public function messages()
+	{
+		return [
+			'login.required'    => 'The username or email field is required.',
+			'login.min'         => 'The username or email must be at least :min characters.',
+			'password.required' => 'The password field is required.',
 		];
 	}
 }

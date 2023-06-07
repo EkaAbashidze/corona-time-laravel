@@ -61,17 +61,11 @@
     </style>
 </head>
 <body>
-    <div>
-        <img src="{{ asset('storage/photos/email-image.png') }}" class="email-image" />
-
-        <h1 class="title">{{ __('messages.recover-password') }}</h1>
-
-        <p class="message">{{ __('messages.recover-password-click') }}</p>
-
-        <a href="{{ route('password.reset', ['token' => $token, 'email' => $email]) }}" class="verify-button">
-            {{ __('messages.recover-password-button') }}
-        </a>
-
-    </div>
+  <div>
+    <img src="{{ asset('storage/photos/email-image.png') }}" class="email-image" />
+    <h1 class="title">{{ __('messages.recover-password') }}</h1>
+    <p class="message">{{ __('messages.recover-password-click') }}</p>
+    <a href="{{ route('password.reset', ['token' => $token, 'email' => $email]) }}" class="verify-button">{{ __('messages.recover-password-button') }}</a>
+  </div>
 </body>
 </html>

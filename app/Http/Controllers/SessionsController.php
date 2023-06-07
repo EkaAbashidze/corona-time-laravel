@@ -17,11 +17,9 @@ class SessionsController extends Controller
 	{
 		$attributes = $request->validated();
 
-		$emailRegEx = '/^\S+@\S+\.\S+$/';
+		$loginType = filter_var($attributes['login'], FILTER_VALIDATE_EMAIL) ? 'email' : 'username';
 
-		$loginType = preg_match($emailRegEx, $attributes['login']) ? 'email' : 'username';
-
-		if (Auth::attempt([$loginType => $attributes['login'], 'password' => $attributes['password']])) {
+		if (Auth::attempt([$loginType => $attributes['login'], 'password' => $attributes['password']], (bool)$request->remember_device)) {
 			return redirect('/')->with('success', 'Welcome back!');
 		}
 

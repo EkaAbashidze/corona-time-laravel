@@ -61,20 +61,11 @@
     </style>
 </head>
 <body>
-    <div>
-
-    
-        <img src="{{ asset('storage/photos/email-image.png') }}" class="email-image" />
-
-        <h1 class="title">{{ __('messages.confirmation_email') }}</h1>
-
-        <p class="message">{{ __('messages.verify_email') }}</p>
-
-
-    <a href="{{ $url }}" class="verify-button">
-    {{ __('messages.verify_email_button') }}
-    </a>
-
-    </div>
+  <div>
+    <img src="{{ asset('images/photos/email-image.png') }}" class="email-image" />
+    <h1 class="title">{{ __('messages.confirmation_email') }}</h1>
+    <p class="message">{{ __('messages.verify_email') }}</p>
+    <a href="{{ $url }}" class="verify-button">{{ __('messages.verify_email_button') }}</a>
+  </div>
 </body>
 </html>
