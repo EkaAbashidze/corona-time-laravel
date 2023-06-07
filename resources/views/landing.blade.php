@@ -79,7 +79,7 @@
   <input type="hidden" name="sort" value="{{ request('sort') }}">
 </div>
 </form>
-<div class="w-[1224px] bg-white border border-[#F6F6F7] shadow-md rounded-md">
+<div class="w-full bg-white border border-[#F6F6F7] shadow-md rounded-md mb-4">
   <table class="w-full border-collapse">
     <thead>
       <tr class="bg-[#F6F6F7] text-gray-600 h-[56px]">
