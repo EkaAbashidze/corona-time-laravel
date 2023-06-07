@@ -102,8 +102,14 @@
     <tbody>
       @foreach ($data as $country)
         <tr class="border-b border-gray-300 h-[49px]">
-          <td class="px-4 py-2">{{ $country->country }}</td>
-          <td class="px-4 py-2">{{ $country->confirmed }}</td>
+        <td class="px-4 py-2">
+        @if(app()->getLocale() === 'ka')
+          {{ __("countries.$country->country") }}
+        @else
+          {{ $country->country }}
+        @endif
+      </td>
+            <td class="px-4 py-2">{{ $country->confirmed }}</td>
           <td class="px-4 py-2">{{ $country->deaths }}</td>
           <td class="px-4 py-2">{{ $country->recovered }}</td>
         </tr>
