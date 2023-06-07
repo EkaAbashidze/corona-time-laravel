@@ -16,14 +16,15 @@
 </nav>
 
 <h1 class="font-inter font-bold text-4xl text-dark-100 my-[40px]">{{ __('messages.statistics_country') }}</h1>
-<div class="flex gap-x-[72px]">
+<div class="flex gap-x-[72px] border-b-[1px] border-[#F6F6F7] mb-8">
   <form method="GET" action="{{ route('landing') }}">
-    <button type="submit" name="view" value="worldwide" class="h-14 flex py-2 rounded-md font-inter font-bold text-base text-dark-100 mb-8">Worldwide</button>
+    <button type="submit" name="view" value="worldwide" class="h-12 flex py-2 font-inter font-bold text-base text-dark-100 {{ Request::query('view') == null || Request::query('view') == 'worldwide' ? 'border-b-[3px] border-[#010414]' : '' }}">Worldwide</button>
   </form>
   <form method="GET" action="{{ route('landing') }}">
-    <button type="submit" name="view" value="bycountry" class="h-14 flex py-2 rounded-md font-inter font-bold text-base text-dark-100 mb-8">By Country</button>
+    <button type="submit" name="view" value="bycountry" class="h-12 flex py-2 font-inter font-bold text-base text-dark-100 {{ Request::query('view') == 'bycountry' ? 'border-b-[3px] border-[#010414]' : '' }}">By Country</button>
   </form>
 </div>
+
 
   @if (!request('view') || request('view') === 'worldwide')
    
