@@ -37,6 +37,7 @@ return [
 	'english'                        => 'ინგლისური',
 	'georgian'                       => 'ქართული',
 	'statistics_country'             => 'სტატისტიკა ქვეყნების მიხედვით',
+	'statistics_worldwide'           => 'მსოფლიო სტატისტიკა',
 
 	'log_out'    => 'გასვლა',
 	'worldwide'  => 'მსოფლიო',

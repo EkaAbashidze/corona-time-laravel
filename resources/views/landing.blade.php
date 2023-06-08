@@ -1,12 +1,12 @@
 <x-html/>
 <div class="mx-[108px]">
 <nav class="flex items-center justify-between h-[80px] border-t-2 border-b-[1px] border-gray-200">
-  <img src="{{ asset('images/photos/logo.svg') }}" alt="Photo" class="ml-8">
+  <img src="{{ asset('images/photos/logo.svg') }}" alt="Photo" class="ml-8 max-[600px]:ml-0 max-[600px]:mr-8">
   <div class="flex items-center">
     <x-language/>
     <div class="flex items-center ml-4">
-      <span class="mr-2">{{$user->username }}</span>
-      <div class="border-l border-gray-300 h-[32px] mx-4"></div>
+      <span class="max-[600px]:hidden mr-2">{{$user->username }}</span>
+      <div class="max-[600px]:hidden  border-l border-gray-300 h-[32px] mx-4"></div>
       <form method="POST" action="{{ route('logout') }}">
         @csrf
         <button type="submit" class="px-4 py-2 font-medium text-gray-700 bg-white rounded-md hover:bg-gray-100 focus:outline-none">{{ __('messages.log_out') }}</button>
@@ -15,7 +15,10 @@
   </div>
 </nav>
 
-<h1 class="font-inter font-bold text-4xl text-dark-100 my-[40px]">{{ __('messages.statistics_country') }}</h1>
+<h1 class="font-inter font-bold text-4xl text-dark-100 my-[40px]">
+  {{ Request::query('view') == 'bycountry' ? __('messages.statistics_country') : __('messages.statistics_worldwide') }}
+</h1>
+
 <div class="flex gap-x-[72px] border-b-[1px] border-[#F6F6F7] mb-8">
   <form method="GET" action="{{ route('landing') }}">
     <button type="submit" name="view" value="worldwide" class="h-12 flex py-2 font-inter font-bold text-base text-dark-100 {{ Request::query('view') == null || Request::query('view') == 'worldwide' ? 'border-b-[3px] border-[#010414]' : '' }}">{{ __('messages.worldwide') }}</button>
@@ -24,7 +27,6 @@
     <button type="submit" name="view" value="bycountry" class="h-12 flex py-2 font-inter font-bold text-base text-dark-100 {{ Request::query('view') == 'bycountry' ? 'border-b-[3px] border-[#010414]' : '' }}">{{ __('messages.by_country') }}</button>
   </form>
 </div>
-
 
   @if (!request('view') || request('view') === 'worldwide')
    
@@ -48,7 +50,7 @@
     <div class="flex flex-col items-center align-center justify-center">
       <img src="{{ asset('images/photos/new.svg') }}" alt="Photo" class="w-[90px]">
       <p class="font-inter font-medium text-[#010414] text-center text-lg leading-6 mt-6">{{ __('messages.new_cases') }}</p>
-      <h2 class="font-inter font-extrabold text-[#2029F3] text-4xl leading-12 mt-4">{{ $totalConfirmed }}</h2>
+      <h2 class="font-inter font-extrabold text-[#2029F3] max-[600px]:text-2xl text-4xl leading-12 mt-4">{{ $totalConfirmed }}</h2>
       </div>
     </div>
  </div>
@@ -62,7 +64,7 @@
   <div class="flex flex-col items-center align-center justify-center">
     <img src="{{ asset('images/photos/recovered.svg') }}" alt="Photo" class="w-[90px]">
     <p class="font-inter font-medium text-[#010414] text-center text-lg leading-6 mt-6">{{ __('messages.recovered') }}</p>
-    <h2 class="font-inter font-extrabold text-[#0FBA68] text-4xl leading-12 mt-4">{{ $totalRecovered }}</h2>
+    <h2 class="font-inter font-extrabold text-[#0FBA68] text-4xl max-[600px]:text-2xl leading-12 mt-4">{{ $totalRecovered }}</h2>
     </div>
   </div>  
 </div>
@@ -73,7 +75,7 @@
     <div class="flex flex-col items-center align-center justify-center">
       <img src="{{ asset('images/photos/deaths.svg') }}" alt="Photo" class="w-[90px]">
       <p class="font-inter font-medium text-[#010414] text-center text-lg leading-6 mt-6">{{ __('messages.deaths') }}</p>
-      <h2 class="font-inter font-extrabold text-[#EAD621] text-4xl leading-12 mt-4">{{ $totalDeaths }}</h2>
+      <h2 class="font-inter font-extrabold text-[#EAD621] text-4xl max-[600px]:text-2xl leading-12 mt-4">{{ $totalDeaths }}</h2>
       </div>
     </div> 
   </div>
