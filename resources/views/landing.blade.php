@@ -91,28 +91,73 @@
   <input type="text" name="search" placeholder="Search by country" value="{{ request('search') }}" class="w-64 h-12 pl-10 pr-4 py-2 font-inter text-dark-FFF bg-dark-20 border border-dark-100 rounded-md">
   <img src="{{ asset('images/photos/search.svg') }}" alt="Photo" class="absolute left-3 top-3 w-6 h-6 text-gray-400">
   <input type="hidden" name="view" value="bycountry">
-  <input type="hidden" name="sort" value="{{ request('sort') }}">
+
+  @if (request('order_by')) 
+    <input type="hidden" name="order_by" value='{{request("order_by")}}'>
+  @endif
+
 </div>
 </form>
 <div class="w-full bg-white border border-[#F6F6F7] shadow-md rounded-md mb-4">
   <table class="w-full border-collapse">
     <thead>
+
       <tr class="bg-[#F6F6F7] text-gray-600 h-[56px]">
-        <th class="px-4 py-2 text-left">
-        {{ __('messages.location') }}<i class="fas fa-sort"></i>
-        </th>
-        <th class="px-4 py-2 text-left">
-        {{ __('messages.new_cases') }} <i class="fas fa-sort"></i>
-        </th>
-        <th class="px-4 py-2 text-left cursor-pointer hover:bg-gray-100">
-          <a href="{{ url()->current() }}?sort=deaths">
-          {{ __('messages.deaths') }} <i class="fas fa-sort"></i>
-          </a>
-        </th>
-        <th class="px-4 py-2 text-left">
-        {{ __('messages.recovered') }} <i class="fas fa-sort"></i>
-        </th>
-      </tr>
+
+
+
+
+      <form action="/" method="GET">
+        <input type="hidden" name='view' value="bycountry">
+      @if (request('search'))
+          <input type="hidden" name="search" value="{{ request('search') }}">
+      @endif
+      <th class="px-4 py-2 text-left">
+          <input type="hidden" name="order_by" value="{{ (request('order_by') == 'country_desc') ? 'country_asc' : 'country_desc' }}">
+          {{ __('messages.location') }}
+          <button type="submit" class="focus:outline-none">
+              <i class="fas fa-sort"></i>
+          </button>
+      </th>
+  </form>
+
+    <th class="px-4 py-2 text-left">
+      <form action="/" method="GET">
+          <input type="hidden" name="view" value="bycountry">
+          @if (request('search'))
+              <input type="hidden" name="search" value="{{ request('search') }}">
+          @endif
+          <input type="hidden" name="order_by" value="{{ (request('order_by') == 'confirmed_desc') ? 'confirmed_asc' : 'confirmed_desc' }}">
+          {{ __('messages.new_cases') }}
+          <button type="submit" class="focus:outline-none">
+              <i class="fas fa-sort"></i>
+          </button>
+      </form>
+  </th>
+          
+    <th class="px-4 py-2 text-left">
+      <form action="/" method="GET">
+        <input type="hidden" name="view" value="bycountry">
+        @if (request('search'))
+        <input type="hidden" name="search" value="{{ request('search') }}">
+        @endif
+        <input type="hidden" name="order_by" value="{{ (request('order_by') == 'deaths_desc') ? 'deaths_asc' : 'deaths_desc' }}">
+        {{ __('messages.deaths') }} <button type="submit" class="focus:outline-none"><i class="fas fa-sort"></i></button>
+      </form>
+    </th>
+
+    <th class="px-4 py-2 text-left">
+      <form action="/" method="GET">
+        <input type="hidden" name="view" value="bycountry">
+        @if (request('search'))
+        <input type="hidden" name="search" value="{{ request('search') }}">
+        @endif
+        <input type="hidden" name="order_by" value="{{ (request('order_by') == 'recovered_desc') ? 'recovered_asc' : 'recovered_desc' }}">
+        {{ __('messages.recovered') }} <button type="submit" class="focus:outline-none"><i class="fas fa-sort"></i></button>
+      </form>
+    </th>
+  </tr>
+
     </thead>
     <tbody>
       @foreach ($data as $country)
