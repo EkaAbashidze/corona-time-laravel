@@ -21,6 +21,6 @@ class CountryStatistics extends Model
 
 	public function scopeSearchCountry(EloquentBuilder $query, $searchCountry): void
 	{
-		$query->where('country', 'like', '%' . $searchCountry . '%');
+		$query->whereIn('country', $searchCountry);
 	}
 }

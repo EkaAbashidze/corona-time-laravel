@@ -37,4 +37,13 @@ return [
 	'english'                        => 'ინგლისური',
 	'georgian'                       => 'ქართული',
 	'statistics_country'             => 'სტატისტიკა ქვეყნების მიხედვით',
+	'statistics_worldwide'           => 'მსოფლიო სტატისტიკა',
+
+	'log_out'    => 'გასვლა',
+	'worldwide'  => 'მსოფლიო',
+	'by_country' => 'ქვეყნის მიხედვით',
+	'new_cases'  => 'ახალი შემთხვევები',
+	'recovered'  => 'გამოჯანმრთელებულები',
+	'deaths'     => 'გარდაცვლილები',
+	'location'   => 'მდებარეობა',
 ];

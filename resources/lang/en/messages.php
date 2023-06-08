@@ -36,4 +36,12 @@ return [
 	'recover-password-click'         => 'click this button to recover a password',
 	'recover-password-button'        => 'RECOVER PASSWORD',
 	'statistics_country'             => 'Statistics by country',
+	'statistics_worldwide'           => 'Statistics worldwide',
+	'log_out'                        => 'Log out',
+	'worldwide'                      => 'Worldwide',
+	'by_country'                     => 'By Country',
+	'new_cases'                      => 'New cases',
+	'recovered'                      => 'Recovered',
+	'deaths'                         => 'Deaths',
+	'location'                       => 'Location',
 ];
