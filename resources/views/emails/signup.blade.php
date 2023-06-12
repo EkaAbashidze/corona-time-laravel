@@ -58,6 +58,19 @@
         .center {
             text-align: center;
         }
+        
+        @media screen and (min-width: 90px) {
+        .title {
+            font-size: 20px;
+        }
+
+        .message {
+            font-size: 16px;
+        }
+        .verify-button {
+            font-size: 14px;
+        }
+        }
     </style>
 </head>
 <body>

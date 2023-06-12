@@ -1,30 +1,53 @@
 <x-html/>
-<div class="mx-[108px]">
-<nav class="flex items-center justify-between h-[80px] border-t-2 border-b-[1px] border-gray-200">
-  <img src="{{ asset('images/photos/logo.svg') }}" alt="Photo" class="ml-8 max-[600px]:ml-0 max-[600px]:mr-8">
-  <div class="flex items-center">
-    <x-language/>
-    <div class="flex items-center ml-4">
-      <span class="max-[600px]:hidden mr-2">{{$user->username }}</span>
-      <div class="max-[600px]:hidden  border-l border-gray-300 h-[32px] mx-4"></div>
-      <form method="POST" action="{{ route('logout') }}">
-        @csrf
-        <button type="submit" class="px-4 py-2 font-medium text-gray-700 bg-white rounded-md hover:bg-gray-100 focus:outline-none">{{ __('messages.log_out') }}</button>
-      </form>
-    </div>
-  </div>
-</nav>
+<div class="mx-[24px] md:mx-[108px]">
+  <nav class="flex items-center justify-between h-[80px] border-t-2 border-b-[1px] border-gray-200">
+    <img src="{{ asset('images/photos/logo.svg') }}" alt="Photo" class="md:ml-8 max-[600px]:ml-0 max-[600px]:mr-8 md:w-[170px] w-[137px]">
+    <div class="flex items-center">
+      <x-language/>
 
-<h1 class="font-inter font-bold text-4xl text-dark-100 my-[40px]">
+      <span class="px-4 py-2 text-gray-700 hidden md:block">{{ $user->username }}</span>
+          <div class="w-[1px] bg-gray-200 hidden h-8 md:block"></div>
+          <form method="POST" action="{{ route('logout') }}">
+            @csrf
+            <button type="submit" class="hidden md:block px-4 py-2 text-gray-700 hover:bg-gray-100 focus:outline-none">{{ __('messages.log_out') }}</button>
+          </form>
+
+
+      <div class="items-center ml-4 flex">
+        <label for="menu-toggle" class="cursor-pointer md:hidden">
+          <img src="{{ asset('images/photos/hamburger.svg') }}" alt="Hamburger" class="w-6 h-6">
+        </label>
+        <input type="checkbox" id="menu-toggle" class="hidden">
+
+        <div class="menu-content hidden md:hidden bg-white border border-gray-300 rounded-md mt-2 fixed top-[50px] right-[20px] md:bg-transparent md:border-none md:rounded-none">
+
+
+      
+
+          <span class="block px-4 py-2 text-gray-700">{{ $user->username }}</span>
+          <div class="border-[1px] border-gray-200"></div>
+          <form method="POST" action="{{ route('logout') }}">
+            @csrf
+            <button type="submit" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 focus:outline-none">{{ __('messages.log_out') }}</button>
+          </form>
+
+
+
+        </div>
+      </div>
+    </div>
+  </nav>
+
+<h1 class="font-inter font-bold md:text-4xl text-[20px] text-dark-100 my-[40px]">
   {{ Request::query('view') == 'bycountry' ? __('messages.statistics_country') : __('messages.statistics_worldwide') }}
 </h1>
 
-<div class="flex gap-x-[72px] border-b-[1px] border-[#F6F6F7] mb-8">
+<div class="flex md:gap-x-[72px] gap-x-[24px] border-b-[1px] border-[#F6F6F7] mb-8">
   <form method="GET" action="{{ route('landing') }}">
-    <button type="submit" name="view" value="worldwide" class="h-12 flex py-2 font-inter font-bold text-base text-dark-100 {{ Request::query('view') == null || Request::query('view') == 'worldwide' ? 'border-b-[3px] border-[#010414]' : '' }}">{{ __('messages.worldwide') }}</button>
+    <button type="submit" name="view" value="worldwide" class="h-12 flex py-2 font-inter font-bold md:text-base text-sm text-dark-100 {{ Request::query('view') == null || Request::query('view') == 'worldwide' ? 'border-b-[3px] border-[#010414]' : '' }}">{{ __('messages.worldwide') }}</button>
   </form>
   <form method="GET" action="{{ route('landing') }}">
-    <button type="submit" name="view" value="bycountry" class="h-12 flex py-2 font-inter font-bold text-base text-dark-100 {{ Request::query('view') == 'bycountry' ? 'border-b-[3px] border-[#010414]' : '' }}">{{ __('messages.by_country') }}</button>
+    <button type="submit" name="view" value="bycountry" class="h-12 flex py-2 font-inter font-bold md:text-base text-sm  text-dark-100 {{ Request::query('view') == 'bycountry' ? 'border-b-[3px] border-[#010414]' : '' }}">{{ __('messages.by_country') }}</button>
   </form>
 </div>
 
@@ -88,7 +111,7 @@
 @if(request('view') === 'bycountry')
 <form method="GET" action="{{ route('landing') }}" class="mb-5">
 <div class="relative">
-  <input type="text" name="search" placeholder="Search by country" value="{{ request('search') }}" class="w-64 h-12 pl-10 pr-4 py-2 font-inter text-dark-FFF bg-dark-20 border border-dark-100 rounded-md">
+  <input type="text" name="search" placeholder="Search by country" value="{{ request('search') }}" class="w-64 h-12 pl-10 pr-4 py-2 font-inter text-dark-FFF bg-dark-20 md:border border-dark-100 rounded-md">
   <img src="{{ asset('images/photos/search.svg') }}" alt="Photo" class="absolute left-3 top-3 w-6 h-6 text-gray-400">
   <input type="hidden" name="view" value="bycountry">
 
@@ -112,7 +135,7 @@
       @if (request('search'))
           <input type="hidden" name="search" value="{{ request('search') }}">
       @endif
-      <th class="px-4 py-2 text-left">
+      <th class="px-4 py-2 text-left md:text-base text-sm">
           <input type="hidden" name="order_by" value="{{ (request('order_by') == 'country_desc') ? 'country_asc' : 'country_desc' }}">
           {{ __('messages.location') }}
           <button type="submit" class="focus:outline-none">
@@ -121,7 +144,7 @@
       </th>
   </form>
 
-    <th class="px-4 py-2 text-left">
+    <th class="px-4 py-2 text-left md:text-base text-sm">
       <form action="/" method="GET">
           <input type="hidden" name="view" value="bycountry">
           @if (request('search'))
@@ -135,7 +158,7 @@
       </form>
   </th>
           
-    <th class="px-4 py-2 text-left">
+    <th class="px-4 py-2 text-left md:text-base text-sm">
       <form action="/" method="GET">
         <input type="hidden" name="view" value="bycountry">
         @if (request('search'))
@@ -146,7 +169,7 @@
       </form>
     </th>
 
-    <th class="px-4 py-2 text-left">
+    <th class="px-4 py-2 text-left md:text-base text-sm">
       <form action="/" method="GET">
         <input type="hidden" name="view" value="bycountry">
         @if (request('search'))
@@ -162,16 +185,16 @@
     <tbody>
       @foreach ($data as $country)
         <tr class="border-b border-gray-300 h-[49px]">
-        <td class="px-4 py-2">
+        <td class="px-4 py-2 md:text-base text-sm">
         @if(app()->getLocale() === 'ka')
           {{ __("countries.$country->country") }}
         @else
           {{ $country->country }}
         @endif
       </td>
-            <td class="px-4 py-2">{{ $country->confirmed }}</td>
-          <td class="px-4 py-2">{{ $country->deaths }}</td>
-          <td class="px-4 py-2">{{ $country->recovered }}</td>
+            <td class="px-4 py-2 md:text-base text-sm">{{ $country->confirmed }}</td>
+          <td class="px-4 py-2 md:text-base text-sm">{{ $country->deaths }}</td>
+          <td class="px-4 py-2 md:text-base text-sm">{{ $country->recovered }}</td>
         </tr>
       @endforeach
     </tbody>
@@ -183,3 +206,9 @@
 </div>
 </body>
 </html>
+
+<style>
+  #menu-toggle:checked ~ .menu-content {
+    display: block;
+  }
+</style>
