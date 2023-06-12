@@ -43,7 +43,7 @@
 
   <div class="flex flex-col mt-8 text-center">
     <button type="submit" class="h-[56px] bg-brand-green text-white py-2 rounded-md font-bold text-center mb-8 w-[343px] md:w-full text-sm md:text-base">{{ __('messages.signup') }}</button>
-    <p class="text-gray-700 text-base w-[343px] md:w-full text-sm md:text-base">{{ __('messages.have_account') }} <a href="{{ route('login') }}" class="font-bold">
+    <p class="text-gray-700 w-[343px] md:w-full text-sm md:text-base">{{ __('messages.have_account') }} <a href="{{ route('login') }}" class="font-bold">
       {{ __('messages.login') }}</a></p>
   </div>
 </form>
