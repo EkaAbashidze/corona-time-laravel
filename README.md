@@ -51,9 +51,9 @@ The app includes features such as registration and login functionality, allowing
 
 #
 ### Getting Started
-1\. First, you need to clone Movie Quotes repository from github:
+1\. First, you need to clone Corona Time repository from github:
 ```sh
-git clone https://github.com/RedberryInternship/ekaterine-abashidze-corona-time.git
+git clone https://github.com/EkaAbashidze/corona-time-laravel.git
 ```
 
 2\. Run *composer install* to install all the dependencies.
